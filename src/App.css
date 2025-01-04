@@ -1,0 +1,649 @@
+/* General Styling */
+body {
+  background-color: black;
+  color: lightgreen;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  margin: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  position: relative;
+}
+
+/* Button Styling */
+.animated-button {
+  background: linear-gradient(90deg, lightgreen, green);
+  margin-top: 250px;
+  color: black;
+  border: none;
+  padding: 30px 60px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.animated-button:hover {
+  transform: scale(1.1);
+}
+
+.animated-button.loading {
+  animation: break-into-pieces 1s forwards;
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+
+.loading-bar {
+  height: 100%;
+  width: 100%;
+  background-color: green;
+  animation: load-progress 5s linear forwards;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@keyframes load-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+/* Loading Text Styling */
+.loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 56px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+}
+
+
+.image-container {
+  text-align: center;
+  /* margin-bottom: 20px; */
+  opacity: 0; /* Start with invisible text */
+  transform: translateY(-100px); /* Start off-screen above */
+  animation: slide-in 3s forwards; /* Slide-in effect */
+}
+
+.profile-picture {
+  width: 250px; /* Adjust the size as needed */
+  height: 350px;
+   border-radius: 20%; /* Makes the image circular */
+  border: 4px solid lightgreen; /* Light green border */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
+  object-fit: cover; /* Ensures the image fits nicely */
+}
+
+
+
+
+/* Completion Text Styling with Slide-in Effect */
+.completion-text {
+  margin-top: 100px;
+  margin-bottom: 200px;
+  color: lightgreen;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0; /* Start with invisible text */
+  transform: translateY(-100px); /* Start off-screen above */
+  animation: slide-in 3s forwards; /* Slide-in effect */
+}
+
+.completion-text h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.completion-text p {
+  font-size: 18px;
+  color: white;
+}
+
+/* Slide-in Animation */
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px); /* Start off-screen */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+  }
+}
+
+
+
+/* Container for both Education and Skills Sections */
+.sections-wrapper {
+  margin-bottom: 250px;
+  display: flex; /* Align sections side by side */
+  justify-content: space-between; /* Space between the sections */
+  margin-top: 40px;
+}
+
+/* Education Section Styling */
+.education-section {
+  flex: 1; /* Take up equal space in the row */
+  margin-right: 20px; /* Space between Education and Skills sections */
+  color: lightgreen;
+  text-align: left;
+  padding: 10px;
+  border: 2px solid lightgreen;
+  border-radius: 10px;
+  background-color: rgba(0, 128, 0, 0.2);
+  opacity: 0; /* Initially hidden */
+  transform: translateX(-100%); /* Start off-screen to the left */
+  transition: opacity 3s ease, transform 4s ease; /* Smooth animation */
+  margin-right: 70px;
+}
+
+.education-section.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to its normal position */
+}
+
+.education-section h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: white;
+}
+
+.education-section ul {
+  color: white;
+  list-style-type: none;
+  padding: 0;
+}
+
+strong{
+  color: lightgreen;
+}
+
+.education-section li {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.education-section li strong {
+  font-size: 20px;
+}
+
+/* Skills Section Styling */
+.skills-section {
+  flex: 1; /* Take up equal space in the row */
+  color: white;
+  text-align: left;
+  padding: 10px;
+  border: 2px solid lightgreen;
+  border-radius: 10px;
+  background-color: rgba(0, 128, 0, 0.2);
+  opacity: 0; /* Initially hidden */
+  transform: translateX(100%); /* Start off-screen to the right */
+  transition: opacity 3s ease, transform 4s ease; /* Smooth animation */
+}
+
+.skills-section.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to its normal position (from right to center) */
+}
+
+.skills-section h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: white;
+}
+
+.skills-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-section li {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.skills-section li strong {
+  font-size: 20px;
+}
+
+
+
+
+
+.video-description {
+  display: flex;
+  margin-top: 100px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.video-container {
+  flex: 1;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(100px); /* Start off-screen below */
+  transition: opacity 2s ease 2s, transform 2s ease 2s; /* Add a 3-second delay */
+}
+
+.video-container.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to its normal position */
+}
+
+
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid lightgreen;
+}
+
+.description-container {
+  flex: 1;
+  text-align: left;
+  padding: 20px;
+  /* background-color: rgba(0, 128, 0, 0.2); */
+  border-radius: 10px;
+  border: 2px solid lightgreen;
+  color: white;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(100px) scale(0.9) rotate(5deg); /* Start off-screen below with a slight scale and rotation */
+  transition: opacity 3s ease 3s, transform 3s ease 3s, transform 0.9s ease-in-out; /* Smooth transition */
+}
+
+/* Add smooth transition effects when the element becomes visible */
+.description-container.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0) scale(1) rotate(0); /* Normal position, scale back to original, and reset rotation */
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.9) rotate(5deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(20px) scale(1.05) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+.description-container.visible {
+  animation: slideIn 2s ease-in-out;
+}
+
+
+
+
+.description-container h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: lightgreen;
+}
+
+.description-container p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+
+
+
+/* Section Styling */
+.project-links-section {
+  background-color: lightgreen; /* Black background */
+  margin-top: 100px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-links-section:hover {
+  transform: scale(1.02);
+}
+
+/* Title Styling */
+.section-title {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Link List */
+.project-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-item {
+  margin: 15px 0;
+}
+
+/* Link Styling with Animation */
+.project-link {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.project-link:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+.project-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+/* Social Links Section Styles */
+.social-links {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background: none;
+  border-radius: 10px;
+  color: black;
+}
+
+.social-links h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: lightgreen;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icon {
+  font-size: 2rem;
+  color: lightgreen;
+  border: 2px solid lightgreen;
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: black;
+  background-color: lightgreen;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.social-icon-button:focus {
+  outline: none;
+}
+
+.whatsapp-container {
+  position: relative;
+}
+
+.whatsapp-tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: lightgreen;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon-button:hover + .whatsapp-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.social-icon-button:focus + .whatsapp-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+/* Container for My Works */
+.my-works-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* Full viewport height */
+  background-color: lightgreen; /* Background color of the page */
+}
+
+/* Styling for the title */
+.my-works-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: lightgreen; /* Text color */
+  background-color: black; /* Black background */
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+/* Hover Effects */
+.my-works-title:hover {
+  transform: scale(1.1);
+  color: black; /* Change text color on hover */
+  background-color: lightgreen; /* Change background to light green */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Media Queries for Responsiveness */
+
+/* For small devices (phones, less than 600px) */
+@media only screen and (max-width: 600px) {
+  body {
+    max-width: 600px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .animated-button {
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+
+  .sections-wrapper {
+    flex-direction: column; /* Stack sections vertically */
+    margin-bottom: 50px;
+  }
+
+  .education-section, .skills-section {
+    margin-right: 0;
+    margin-bottom: 20px; /* Add spacing between stacked sections */
+  }
+
+  .video-description {
+    flex-direction: column; /* Stack video and description vertically */
+    gap: 10px;
+  }
+
+  .video-container {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .description-container {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .social-links h3 {
+    font-size: 1.2rem;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+}
+
+/* For medium devices (tablets, 600px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    max-width: 900px;
+    padding: 30px;
+    font-size: 16px;
+  }
+
+  .animated-button {
+    padding: 20px 40px;
+    font-size: 18px;
+  }
+
+  .sections-wrapper {
+    flex-direction: row; /* Maintain side-by-side layout */
+    flex-wrap: wrap; /* Allow wrapping */
+    margin-bottom: 100px;
+  }
+
+  .education-section, .skills-section {
+    flex: 1 1 45%; /* Take up half the width, leave spacing */
+    margin: 10px;
+  }
+
+  .video-description {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .video-container {
+    width: 100%;
+  }
+
+  .description-container {
+    padding: 15px;
+  }
+
+  .social-links h3 {
+    font-size: 1.4rem;
+  }
+
+  .social-icon {
+    font-size: 1.8rem;
+    padding: 10px;
+  }
+}
+
+/* For large devices (desktops, above 900px) */
+@media only screen and (min-width: 901px) {
+  body {
+    padding: 50px;
+    font-size: 18px;
+  }
+
+  .sections-wrapper {
+    margin-top: 50px;
+    margin-bottom: 150px;
+  }
+
+  .education-section, .skills-section {
+    flex: 1 1 45%;
+  }
+
+  .video-description {
+    flex-direction: row; /* Maintain side-by-side layout */
+  }
+
+  .video-container {
+    width: 45%; /* Limit width for better layout */
+  }
+
+  .description-container {
+    padding: 20px;
+  }
+
+  .social-links h3 {
+    font-size: 1.6rem;
+  }
+
+  .social-icon {
+    font-size: 2rem;
+    padding: 12px;
+  }
+}
