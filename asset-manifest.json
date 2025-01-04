@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Rajmakwana08/portfolio.git/static/css/main.06efb2ab.css",
-    "main.js": "/Rajmakwana08/portfolio.git/static/js/main.5e4fc3bc.js",
-    "static/js/488.15c117bb.chunk.js": "/Rajmakwana08/portfolio.git/static/js/488.15c117bb.chunk.js",
-    "static/media/Raj E-commerce Website.mp4": "/Rajmakwana08/portfolio.git/static/media/Raj E-commerce Website.7c93d846090386398341.mp4",
-    "static/media/Thumbnail Portfolio Website.mp4": "/Rajmakwana08/portfolio.git/static/media/Thumbnail Portfolio Website.522730295f1cd32820bc.mp4",
-    "static/media/Raj IceCreams.mp4": "/Rajmakwana08/portfolio.git/static/media/Raj IceCreams.a56afc63b7b1550baa23.mp4",
-    "static/media/my photo.jpg": "/Rajmakwana08/portfolio.git/static/media/my photo.2550dffc552a66b5ec0a.jpg",
-    "static/media/click-sound.mp3": "/Rajmakwana08/portfolio.git/static/media/click-sound.9b5f28cce0810e29e18a.mp3",
-    "index.html": "/Rajmakwana08/portfolio.git/index.html",
-    "main.06efb2ab.css.map": "/Rajmakwana08/portfolio.git/static/css/main.06efb2ab.css.map",
-    "main.5e4fc3bc.js.map": "/Rajmakwana08/portfolio.git/static/js/main.5e4fc3bc.js.map",
-    "488.15c117bb.chunk.js.map": "/Rajmakwana08/portfolio.git/static/js/488.15c117bb.chunk.js.map"
+    "main.css": "/portfolio/static/css/main.06efb2ab.css",
+    "main.js": "/portfolio/static/js/main.6aa41f0c.js",
+    "static/js/488.15c117bb.chunk.js": "/portfolio/static/js/488.15c117bb.chunk.js",
+    "static/media/Raj E-commerce Website.mp4": "/portfolio/static/media/Raj E-commerce Website.7c93d846090386398341.mp4",
+    "static/media/Thumbnail Portfolio Website.mp4": "/portfolio/static/media/Thumbnail Portfolio Website.522730295f1cd32820bc.mp4",
+    "static/media/Raj IceCreams.mp4": "/portfolio/static/media/Raj IceCreams.a56afc63b7b1550baa23.mp4",
+    "static/media/my photo.jpg": "/portfolio/static/media/my photo.2550dffc552a66b5ec0a.jpg",
+    "static/media/click-sound.mp3": "/portfolio/static/media/click-sound.9b5f28cce0810e29e18a.mp3",
+    "index.html": "/portfolio/index.html",
+    "main.06efb2ab.css.map": "/portfolio/static/css/main.06efb2ab.css.map",
+    "main.6aa41f0c.js.map": "/portfolio/static/js/main.6aa41f0c.js.map",
+    "488.15c117bb.chunk.js.map": "/portfolio/static/js/488.15c117bb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.06efb2ab.css",
-    "static/js/main.5e4fc3bc.js"
+    "static/js/main.6aa41f0c.js"
   ]
 }
