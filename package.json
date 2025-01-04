@@ -2,7 +2,7 @@
   "name": "react-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Rajmakwana08/portfolio.git",
+  "homepage": "https://Rajmakwana08.github.io/portfolio",
   "dependencies": {
     "cra-template": "1.2.0",
     "framer-motion": "^11.15.0",
