@@ -129,7 +129,7 @@ function App() {
               <h3>Skills</h3>
               <ul>
                 <li>
-                  <strong>Languages:</strong> JavaScript, Python, HTML, CSS, C, C++
+                  <strong>Languages:</strong> JavaScript, Python, CSS, C, C++
                 </li>
                 <li>
                   <strong>Frameworks:</strong> React, Django

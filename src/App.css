@@ -27,18 +27,59 @@ body {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
+  border-radius: 50px; /* Rounded corners */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
+/* Hover Effect */
 .animated-button:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
 }
 
+/* Glow Effect */
+.animated-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.animated-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Loading Animation */
 .animated-button.loading {
   animation: break-into-pieces 1s forwards;
   pointer-events: none;
   opacity: 0;
+}
+
+@keyframes break-into-pieces {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
 
 
@@ -77,26 +118,61 @@ body {
 
 
 .image-container {
-  text-align: center;
-  /* margin-bottom: 20px; */
-  opacity: 0; /* Start with invisible text */
-  transform: translateY(-100px); /* Start off-screen above */
-  animation: slide-in 3s forwards; /* Slide-in effect */
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: slide-in 3s forwards, float 4s ease-in-out infinite 3s;
+  transition: opacity 1s ease; /* Smooth fade-in */
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px); /* Start off-screen */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
 
 .profile-picture {
   width: 250px; /* Adjust the size as needed */
   height: 350px;
-   border-radius: 20%; /* Makes the image circular */
+  border-radius: 20%; /* Makes the image circular */
   border: 4px solid lightgreen; /* Light green border */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
   object-fit: cover; /* Ensures the image fits nicely */
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: glow-border 2s infinite alternate; /* Add glow border animation */
+}
+
+/* Hover Effect */
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 255, 0, 0.6); /* Glow effect on hover */
+}
+
+/* Glow Border Animation */
+@keyframes glow-border {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+  }
 }
 
 
 
 
-/* Completion Text Styling with Slide-in Effect */
 .completion-text {
   margin-top: 100px;
   margin-bottom: 200px;
@@ -105,17 +181,22 @@ body {
   font-weight: bold;
   opacity: 0; /* Start with invisible text */
   transform: translateY(-100px); /* Start off-screen above */
-  animation: slide-in 3s forwards; /* Slide-in effect */
+  animation: slide-in 3s forwards, glow-text 2s infinite alternate; /* Slide-in and glow effect */
+  text-align: center;
+  position: relative;
 }
 
 .completion-text h2 {
   font-size: 36px;
   margin-bottom: 10px;
+  text-shadow: 0 0 5px lightgreen, 0 0 10px lightgreen, 0 0 20px lightgreen;
+  animation: neon-text 1.5s infinite alternate;
 }
 
 .completion-text p {
   font-size: 18px;
   color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* Slide-in Animation */
@@ -129,6 +210,30 @@ body {
     transform: translateY(0); /* End at normal position */
   }
 }
+
+/* Neon Text Effect */
+@keyframes neon-text {
+  0% {
+    text-shadow: 0 0 5px lightgreen, 0 0 10px lightgreen, 0 0 20px lightgreen;
+  }
+  100% {
+    text-shadow: 0 0 10px lightgreen, 0 0 20px lightgreen, 0 0 40px lightgreen;
+  }
+}
+
+/* Glow Text Effect */
+@keyframes glow-text {
+  0% {
+    color: lightgreen;
+    text-shadow: 0 0 5px lightgreen, 0 0 10px lightgreen;
+  }
+  100% {
+    color: white;
+    text-shadow: 0 0 10px lightgreen, 0 0 20px lightgreen;
+  }
+}
+
+
 
 
 
@@ -188,6 +293,13 @@ strong{
   font-size: 20px;
 }
 
+/* Parent container for the sections */
+.sections-wrapper {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden; /* Prevent extra space caused by translateX */
+}
+
 /* Skills Section Styling */
 .skills-section {
   flex: 1; /* Take up equal space in the row */
@@ -199,7 +311,17 @@ strong{
   background-color: rgba(0, 128, 0, 0.2);
   opacity: 0; /* Initially hidden */
   transform: translateX(100%); /* Start off-screen to the right */
-  transition: opacity 3s ease, transform 4s ease; /* Smooth animation */
+  transition: opacity 3s ease, transform 3s ease; /* Smooth animation */
+}
+
+/* When the section becomes visible */
+.skills-section.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to its normal position */
+}
+
+.skills-section {
+  transition: opacity 3s ease 0.5s, transform 3s ease 0.5s; /* Add a 0.5s delay */
 }
 
 .skills-section.visible {
