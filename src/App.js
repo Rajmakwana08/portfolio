@@ -7,7 +7,6 @@ import portfolioVideo2 from "./assets/Thumbnail Portfolio Website.mp4";
 import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import myPhoto from "./assets/my photo.jpg";
 
-
 function App() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -17,7 +16,25 @@ function App() {
   const projects = [
     { name: "task-manager", link: "https://rajmakwana08.github.io/raj-task-manager" },
     { name: "Thumbnails website for my client", link: "https://rajmakwana.pythonanywhere.com/" },
-    { name: "Textutils", link: "https://rajmakwana08.github.io/textutils" },
+    { name: "Textutils", link: "https://rajmakwana08.github.io/textutils" }
+  ];
+
+  const techResources = [
+    {
+      // name: "CSS Interview Questions",
+      link: "https://rajmakwana08.github.io/css-interview-questions/",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
+    },
+    {
+      // name: "React Resources",
+      link: "https://rajmakwana08.github.io/react-interview-questions/",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+    },
+    {
+      // name: "HTML Resources",
+      link: "https://rajmakwana08.github.io/html-interview-questions/",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+    }
   ];
 
   const handleClick = () => {
@@ -67,8 +84,6 @@ function App() {
     };
   }, []);
   
-  
-
   return (
     <div className="App">
       <audio ref={audioRef} src={clickSound}></audio>
@@ -113,7 +128,7 @@ function App() {
                   <br />
                   <em>Running last sem</em>
                   <br />
-                  CGPI: 8.33/10 (up to 5th semester)
+                  CGPI: 8.42
                 </li>
                 <li>
                   <strong>SSC and HSC (Commerce)</strong>
@@ -244,8 +259,24 @@ function App() {
             </ul>
           </section>
 
+          <section className="tech-resources-section">
+            <h2 className="section-title">💡 Tech Resources</h2>
+            <div className="tech-cards">
+              {techResources.map((tech, index) => (
+                <a
+                  key={index}
+                  href={tech.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tech-card"
+                >
+                  <img src={tech.icon} alt={tech.name} className="tech-icon" />
+                  {/* <div className="tech-name">{tech.name}</div> */}
+                </a>
+              ))}
+            </div>
+          </section>
 
-          
           <div className="social-links">
             <h3>Connect with Me</h3>
             <div className="icons">
@@ -286,8 +317,6 @@ function App() {
               </div>
             </div>
           </div>
-
-
         </>
       )}
     </div>
