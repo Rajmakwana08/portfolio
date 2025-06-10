@@ -13,29 +13,50 @@ function App() {
   const [completed, setCompleted] = useState(false);
   const audioRef = useRef(null);
   const intervalRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
+  // const audioRef = useRef(null);
   const projects = [
     { name: "task-manager", link: "https://rajmakwana08.github.io/raj-task-manager" },
     { name: "Thumbnails website for my client", link: "https://rajmakwana.pythonanywhere.com/" },
     { name: "Textutils", link: "https://rajmakwana08.github.io/textutils" }
   ];
 
-  const techResources = [
-    {
-      // name: "CSS Interview Questions",
-      link: "https://rajmakwana08.github.io/css-interview-questions/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
-    },
-    {
-      // name: "React Resources",
-      link: "https://rajmakwana08.github.io/react-interview-questions/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
-    },
-    {
-      // name: "HTML Resources",
-      link: "https://rajmakwana08.github.io/html-interview-questions/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+    const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(!isMuted);
     }
-  ];
+  };
+
+  const techResources = [
+  {
+    name: "CSS Interview Questions",
+    link: "https://rajmakwana08.github.io/css-interview-questions/",
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
+  },
+  {
+    name: "React Interview Questions",
+    link: "https://rajmakwana08.github.io/react-interview-questions/",
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+  },
+  {
+    name: "HTML Interview Questions",
+    link: "https://rajmakwana08.github.io/html-interview-questions/",
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+  },
+  {
+    name: "SQL Interview Questions",
+    link: "https://rajmakwana08.github.io/sql-interview-questions/",
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"
+  },
+  {
+    name: "DSA Practical Interview Questions (Python)",
+    link: "https://rajmakwana08.github.io/dsa-practical-interview-questions/",
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+  }
+];
+
+
 
   const handleClick = () => {
     setLoading(true);
@@ -44,6 +65,7 @@ function App() {
 
     if (audioRef.current) {
       audioRef.current.loop = true;
+      audioRef.current.muted = isMuted;
       audioRef.current.play();
     }
 
@@ -87,6 +109,9 @@ function App() {
   return (
     <div className="App">
       <audio ref={audioRef} src={clickSound}></audio>
+      <button className="volume-control" onClick={toggleMute}>
+        {isMuted ? '🔇' : '🔊'}
+      </button>
       {!loading && !completed && (
         <div className="button-container">
           <button className="animated-button" onClick={handleClick}>
@@ -128,7 +153,7 @@ function App() {
                   <br />
                   <em>Running last sem</em>
                   <br />
-                  CGPI: 8.42
+                  CGPA: 8.42
                 </li>
                 <li>
                   <strong>SSC and HSC (Commerce)</strong>
@@ -271,7 +296,7 @@ function App() {
                   className="tech-card"
                 >
                   <img src={tech.icon} alt={tech.name} className="tech-icon" />
-                  {/* <div className="tech-name">{tech.name}</div> */}
+                  <div className="tech-name">{tech.name}</div>
                 </a>
               ))}
             </div>
