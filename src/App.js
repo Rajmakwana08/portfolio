@@ -151,8 +151,8 @@ function App() {
                   <br />
                   Bhakta Kavi Narsinh Mehta University
                   <br />
-                  <em>Running last sem</em>
-                  <br />
+                  {/* <em>Running last sem</em>
+                  <br /> */}
                   CGPA: 8.42
                 </li>
                 <li>
