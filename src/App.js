@@ -4,13 +4,16 @@ import clickSound from "./assets/click-sound.mp3"; // Import the sound file
 import portfolioVideo from "./assets/Raj IceCreams.mp4"; // Import the video file
 import portfolioVideo1 from "./assets/Raj E-commerce Website.mp4";
 import portfolioVideo2 from "./assets/Thumbnail Portfolio Website.mp4";
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import myPhoto from "./assets/my photo.jpg";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(() => {
+    return sessionStorage.getItem("hasSeenLoadingAnimation") === "true";
+  });
   const audioRef = useRef(null);
   const intervalRef = useRef(null);
   const [isMuted, setIsMuted] = useState(false);
@@ -28,33 +31,8 @@ function App() {
     }
   };
 
-  const techResources = [
-  {
-    name: "CSS Interview Questions",
-    link: "https://rajmakwana08.github.io/css-interview-questions/",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
-  },
-  {
-    name: "React Interview Questions",
-    link: "https://rajmakwana08.github.io/react-interview-questions/",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
-  },
-  {
-    name: "HTML Interview Questions",
-    link: "https://rajmakwana08.github.io/html-interview-questions/",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
-  },
-  {
-    name: "SQL Interview Questions",
-    link: "https://rajmakwana08.github.io/sql-interview-questions/",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"
-  },
-  {
-    name: "DSA Practical Interview Questions (Python)",
-    link: "https://rajmakwana08.github.io/dsa-practical-interview-questions/",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-  }
-];
+  // Tech resources have been moved to a dedicated page ("/tech-resources").
+  // See src/data/techResources.js and src/TechResources.js
 
 
 
@@ -84,6 +62,7 @@ function App() {
       setLoading(false);
       clearInterval(intervalRef.current);
       setCompleted(true);
+      sessionStorage.setItem("hasSeenLoadingAnimation", "true");
     }, 5000);
   };
 
@@ -286,20 +265,13 @@ function App() {
 
           <section className="tech-resources-section">
             <h2 className="section-title">💡 Tech Resources</h2>
-            <div className="tech-cards">
-              {techResources.map((tech, index) => (
-                <a
-                  key={index}
-                  href={tech.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tech-card"
-                >
-                  <img src={tech.icon} alt={tech.name} className="tech-icon" />
-                  <div className="tech-name">{tech.name}</div>
-                </a>
-              ))}
-            </div>
+            <p>
+              I moved the full list of tech resources to a dedicated page for
+              easier browsing. Click below to explore curated links and guides.
+            </p>
+            <Link to="/tech-resources" className="tech-resources-link">
+              View Tech Resources →
+            </Link>
           </section>
 
           <div className="social-links">
