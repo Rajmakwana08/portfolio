@@ -440,6 +440,10 @@ strong{
 
 
 
+
+
+
+
 /* Tech Resources Section */
 .tech-resources-section {
   margin-top: 50px;
@@ -610,6 +614,10 @@ strong{
   0% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+
+
+
 
 
 
@@ -953,3 +961,33 @@ strong{
     padding: 12px;
   }
 }
+
+/* When user already saw the intro/loading animation, disable page animations */
+body.no-animations .image-container,
+body.no-animations .completion-text,
+body.no-animations .section,
+body.no-animations .section1,
+body.no-animations .description-container,
+body.no-animations .video-container,
+body.no-animations .project-links-section,
+body.no-animations .tech-resources-section,
+body.no-animations .social-links {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Ensure profile picture not animated */
+body.no-animations .profile-picture {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Ensure tech cards show immediately */
+body.no-animations .tech-card {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+

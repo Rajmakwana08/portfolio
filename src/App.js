@@ -67,6 +67,21 @@ function App() {
   };
 
   useEffect(() => {
+    // If user already saw the intro/loading animation in this session,
+    // mark sections visible immediately and disable animations.
+    const hasSeen = sessionStorage.getItem("hasSeenLoadingAnimation") === "true";
+    if (hasSeen) {
+      // prevent animation CSS from running
+      document.body.classList.add('no-animations');
+      const sections = document.querySelectorAll(
+        ".section, .section1, .description-container, .image-container, .completion-text, .video-container"
+      );
+      sections.forEach((section) => {
+        section.classList.add("visible");
+      });
+      return;
+    }
+
     const handleScroll = () => {
       const sections = document.querySelectorAll(".section, .section1, .description-container");
       const windowHeight = window.innerHeight;
